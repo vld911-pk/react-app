@@ -1,0 +1,28 @@
+*{
+  box-sizing: border-box;
+  /* overflow-y: hidden; */
+}
+body{
+  background-color: tomato;
+  -webkit-user-select:none;
+}
+
+.app-wrapper{
+  margin:5px;
+  /* height: 100vh; */
+  text-align: center;
+  display: grid;
+  grid-gap:5px;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:repeat(4,1fr);
+  grid-template-areas:"header header    header    header    header    header"
+                      "aside  contenter contenter contenter contenter contenter"
+                      "aside  contenter contenter contenter contenter contenter"
+                      "footer footer    footer    footer    footer    footer";
+}
+
+.border{
+  border:5px solid black;
+  padding: 10px;
+}
+
