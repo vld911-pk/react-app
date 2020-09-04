@@ -1,20 +1,28 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Content from './components/Content';
-import Aside from './components/Aside';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Content from './components/Content/Content';
+import Aside from './components/Aside/Aside';
+import Dialogs from './components/Dialogs/Dialogs';
+import Weather from './components/Weather/Weather';
+import {BrowserRouter,Route} from 'react-router-dom';
 
 
-
-function App() {
+function App(props) {
   return (
+    <BrowserRouter>
         <div className = "app-wrapper">
             <Header />
             <Aside />
-            <Content />
+                  <div className = "content-wrapper border">
+                      <Route path = '/dialogs' render = {()=><Dialogs dialogs = {props.appState.dialogsPersonData} messages = {props.appState.dialogsMessageData}/>}/>
+                      <Route path = '/content' render = {()=><Content posts = {props.appState.posts} addPost = {props.addPost} changeNewPostText = {props.changeNewPostText} newPostText = {props.newPostText}/>}/>
+                      <Route path = '/weather' render = {()=><Weather/>}/>
+                  </div>
             <Footer />
         </div>
+   </BrowserRouter>
   );
 }
 export default App;

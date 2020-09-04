@@ -1,0 +1,21 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+a{
+  text-decoration: none;
+}
+.messages .message{
+    color:black;
+}
+.dialogImg{
+  border: 3px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.messButt{
+  position:relative;
+  float:bottom;
+  width:100px;
+}

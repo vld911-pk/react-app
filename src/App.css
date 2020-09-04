@@ -13,16 +13,26 @@ body{
   text-align: center;
   display: grid;
   grid-gap:5px;
-  grid-template-columns:repeat(6,1fr);
-  grid-template-rows:repeat(4,1fr);
-  grid-template-areas:"header header    header    header    header    header"
-                      "aside  contenter contenter contenter contenter contenter"
-                      "aside  contenter contenter contenter contenter contenter"
-                      "footer footer    footer    footer    footer    footer";
+  grid-template-columns:repeat(8,1fr);
+  grid-template-rows:repeat(6,1fr);
+  grid-template-areas:". header header    header    header    header    header"
+                      ". aside  contenter contenter contenter contenter contenter"
+                      ". aside  contenter contenter contenter contenter contenter"
+                      ". aside  contenter contenter contenter contenter contenter"
+                      ". aside  contenter contenter contenter contenter contenter"
+                      ". footer footer    footer    footer    footer    footer";
 }
 
 .border{
   border:5px solid black;
   padding: 10px;
+}
+.content-wrapper{
+    height: 400px;
+    background-color: rgb(126, 53, 53);
+    grid-area: contenter;
+    overflow-y: auto;
+    text-align: left;
+
 }
 

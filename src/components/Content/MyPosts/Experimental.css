@@ -1,0 +1,19 @@
+
+.person{
+    background-color: coral;
+    border: 5px solid tomato;
+    border-radius: 15px;
+    height: 150px;
+    width:500px;
+    margin:5px;
+}
+.person:hover{
+    border:5px solid red;
+}
+.person img{
+    width:70px;
+    height: 95px;
+    float:left;
+    margin:20px;
+    border:3px solid black; 
+}
