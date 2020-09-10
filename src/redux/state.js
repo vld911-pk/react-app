@@ -18,7 +18,12 @@ let state = {
         {id : 2,message : "It's me"},
         {id : 3,message : "I was wondering"},
         {id : 4,message : "if after all thease years"}
-      ]
+      ],
+      weatherData : {
+         API_KEY : '6b52e5d16588230c0bf2a25d4385c817'
+      }
+
+      
 };
 
 export function addPost(mess){

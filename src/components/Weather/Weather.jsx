@@ -1,90 +1,85 @@
-import React ,{useState, useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import './Weather.css';
-
-// class Clock extends React.Component {
-//     constructor(props) {
-//       super(props);
-//       this.state = {date: new Date()};
-//     }
-//     componentDidMount() {
-//         this.timerID = setInterval(
-//             () => this.tick(),
-//             1000
-//           );
-//     }
-//     componentWillUnmount() {
-//         clearInterval(this.timerID);
-//     }
-//     tick() {
-//         this.setState({
-//           date: new Date()
-//         });
-//       }
-//     render() {
-//       return (
-//         <div>
-//           <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
-//         </div>
-//       );
-//     }
-//   }
-
-// function Clock2(){
-//     let [time,setTime] = useState(new Date());
+import Form from './form';
 
 
-//     useEffect(()=>{
-//       setInterval(()=> setTime(new Date),1000);
-//     },[])
+
+const apiRequiredData = {
+    temp : undefined,
+    city : undefined,
+    country:undefined,
+    sunrise:undefined,
+    sunset: undefined  
+}
+
+let styles = {
+  background : 'rgb(126, 53, 53)',
+  color : 'tomato'
+}
+function timeDefinder(undefinedTime){
+      let time = undefinedTime;
+      let date = new Date();
+      date.setTime(time);
+  return  date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(); 
+}
+
+function temperatureDefinder(kelvin){
+  return (kelvin - 273.15).toFixed(2) + ' Celsius';
+}
+
+function Weather(props){
+
+const [weatherData,setWeatherData] = useState(apiRequiredData);
+const [error,setError] = useState(false);
+
+useEffect(() =>{
+  if(parseInt(weatherData.temp) >= 10){
+   
+  } else;
+},[weatherData]);
+
+  let handleError = () =>{
+    if(error){
+      return <p className = "danger">Put the city dickhead</p>;
+    }
+  }
+
+  let getter = async event =>{
+    event.preventDefault();
+    let city = event.target.elements.city.value;  
+         setError(false);
+      try {
+        if(city){
+          let api = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${props.api}`);
+          let req = await api.json();  
      
-   
-//     return (
-//             <div>
-//                   <h2>Сейчас {time.toLocaleTimeString()}.</h2>
-//             </div>
-//     );
-// }
-// function Fetcher(){
-
-// let [gitData,setGitData] = useState('nothing');
-
-//   useEffect(()=>{
-//     fetch('https://api.github.com/users/vld911-pk')
-//     .then((result) => result.json())
-//     .then((json) => setGitData(json))
-//   });
-//       return (
-//       <pre>{JSON.stringify(gitData,null,2)}</pre>
-//       )
-// }
-class Fetcher extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {gitData : 'nothing'}
-  }
-  componentDidMount(){
-    this.task();
-  }
-  async task(){
-    
-     let response = await  fetch('https://api.github.com/users/vld911-pk')
-     let json  = await response.json();
-     return this.setState({gitData : json});
-   
-  }
-  render(){
-    return (
-    <pre>{JSON.stringify(this.state.gitData,null,2)}</pre>
-    )
+          setWeatherData({temp : temperatureDefinder(req.main.temp),
+                          city : req.name,
+                          country: req.sys.country,
+                          sunrise: timeDefinder(req.sys.sunrise),
+                          sunset: timeDefinder(req.sys.sunset)
+          });
+        }else{
+          setError(true);
+        }
+      } catch (error) {
+        throw error;
+      }
   }
 
+return (
+  <React.Fragment>
+  <div>
+      <Form api_getter = {getter}/>
+      {handleError()}
+        <p> Temperature : {weatherData.temp}</p>
+        <p> Sunrise:{weatherData.sunrise} </p>
+        <p> City:{weatherData.city} </p>
+  </div>
+  </React.Fragment>
+)
+ 
 }
-function Weather(){  
-  return  (
-      <Fetcher />
-  );
-}
-
 export default Weather;
 
 
@@ -92,22 +87,3 @@ export default Weather;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- {/* <div>
-                    <p>Weather</p>
-                </div> */}
