@@ -12,10 +12,6 @@ const apiRequiredData = {
     sunset: undefined  
 }
 
-let styles = {
-  background : 'rgb(126, 53, 53)',
-  color : 'tomato'
-}
 function timeDefinder(undefinedTime){
       let time = undefinedTime;
       let date = new Date();
