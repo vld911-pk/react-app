@@ -28,11 +28,6 @@ function Weather(props){
 const [weatherData,setWeatherData] = useState(apiRequiredData);
 const [error,setError] = useState(false);
 
-useEffect(() =>{
-  if(parseInt(weatherData.temp) >= 10){
-   
-  } else;
-},[weatherData]);
 
   let handleError = () =>{
     if(error){

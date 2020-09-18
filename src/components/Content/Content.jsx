@@ -19,16 +19,15 @@ function changetext(){
 }
     return (
         <React.Fragment>
-        
-        <div>
-            {postElements}
-        </div>
-        <div>
-            <textarea ref = {newPostElement} onChange = {changetext} value = {props.newPostText}></textarea>
-        </div>
-        <div>
-            <button onClick = {addPost}>Add post</button>
-        </div>
+            <div>
+                {postElements}
+            </div>
+            <div>
+                <textarea ref = {newPostElement} onChange = {changetext} value = {props.newPostText}></textarea>
+            </div>
+            <div>
+                <button onClick = {addPost}>Add post</button>
+            </div>
         </React.Fragment>
     );
 }
