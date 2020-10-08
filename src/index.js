@@ -7,11 +7,10 @@ import App from './App';
 
 
 
- let reRender = (state) =>{
+let reRender = (state) =>{
     ReactDOM.render(
       <React.StrictMode>
         <App appState = {store.getState()} 
-            addPost = {store.dispatch.bind(store)} 
             dispatch = {store.dispatch.bind(store)} 
         />
       </React.StrictMode>,

@@ -1,6 +1,7 @@
     import React from 'react';
     import s from './Dialogs.module.css';
     import {NavLink ,Route, BrowserRouter} from 'react-router-dom';
+    import {addNewMessage} from '../../redux/reducers/dialogMess_reducer';
 
     const DialogItem = (props) =>{
         let path = "/dialogs/" + props.id;
@@ -21,10 +22,13 @@
     const Dialogs = (props) =>{
     let newD = React.createRef(); 
 
-        function messageValue(){
-            let text = newD.current.value;
-            alert(text);
-        }
+    function messageValue(){
+        let text = newD.current.value;
+        let action = addNewMessage(text);
+        console.log(action);
+        props.dispatch(action);
+        newD.current.value = '';
+    }
 
     let dialogsRender = props.dialogs.map(item  =>  <DialogItem  src = {item.src} name = {item.name} id = {item.id}/>);
     let messageRender = props.messages.map(item =>  <Message message = {item.message}/>);
