@@ -17,7 +17,7 @@ function App(props) {
             <Aside />
                   <div className = "content-wrapper border">
                       <Route path = '/dialogs' render = {()=><Dialogs dialogs = {props.appState.dialogsPersonData} messages = {props.appState.dialogsMessageData}/>}/>
-                      <Route path = '/content' render = {()=><Content posts = {props.appState.posts} addPost = {props.addPost} changeNewPostText = {props.changeNewPostText} newPostText = {props.newPostText}/>}/>
+                      <Route path = '/content' render = {()=><Content posts = {props.appState.posts} dispatch = {props.dispatch} newPostText = {props.newPostText}/>}/>
                       <Route path = '/weather' render = {()=><Weather api = {props.appState.weatherData.API_KEY}/>}/>
                   </div>
             <Footer />

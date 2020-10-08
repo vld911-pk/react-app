@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 
 let store = {
   reRender : undefined,
@@ -27,7 +30,9 @@ let store = {
 
       
     },
-    addPost(mess){
+   
+    newPostText : "input your message:",
+    _addPost(mess){
       let newMess = {
         id:5,
         message:mess,
@@ -39,14 +44,33 @@ let store = {
     getState(){
       return this._state;
     },
-    changeNewPostText(txt){
+    _changeNewPostText(txt){
       this._state.newPostText = txt;
       this.reRender(this._state);
     },
     subscribe(observer) {
       this.reRender = observer;
     },
-    newPostText : "input your message:"
+    
+    dispatch(action){
+      if(action.type === 'ADD-POST'){
+        this._addPost(action.mess);
+      }else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+        this._changeNewPostText();
+      }
+    }
 }
- 
+export const addPostAction = (mess) =>{
+  return {
+    type : ADD_POST,
+    mess : mess
+  }
+}
+export const updateNewPostAction = (text) =>{
+  return {
+    type : UPDATE_NEW_POST_TEXT,
+    txt : text
+    
+  }
+} 
 export default store;

@@ -11,9 +11,9 @@ import App from './App';
     ReactDOM.render(
       <React.StrictMode>
         <App appState = {store.getState()} 
-            addPost = {store.addPost.bind(store)} 
-            changeNewPostText = {store.changeNewPostText.bind(store)} 
-            newPostText = {store.newPostText}/>
+            addPost = {store.dispatch.bind(store)} 
+            dispatch = {store.dispatch.bind(store)} 
+        />
       </React.StrictMode>,
       document.getElementById('root')
     );
